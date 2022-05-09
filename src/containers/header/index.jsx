@@ -11,8 +11,8 @@ const Header = () => {
       {!user.token ? (
         <>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">Blog</NavLink>
-          <NavLink to="/subjects">Posts</NavLink>
+          <NavLink to="/themes">Themes</NavLink>
+          <NavLink to="/posts">Posts</NavLink>
           <NavLink to="/login">Login</NavLink>
           <NavLink to="/register">Register</NavLink>
         </>

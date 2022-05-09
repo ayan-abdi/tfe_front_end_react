@@ -1,6 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { useEffect, useState } from "react";
 
 export const userToken = createAction("user/token", ({ token, expire }) => {
   const { pseudo, isAdmin } = jwtDecode(token);
@@ -32,18 +33,28 @@ export const userLogin = ({ identity, password }) => {
       });
   };
 };
-export const posts = ({ title, content }) => {
-  return (dispatch) => {
-    axios
-      .post("http://localhost:2020/api/posts", { title, content })
-      .then(({ data }) => {
-        dispatch(userToken(data));
-      })
-      .catch(() => {
-        dispatch(userSendError());
-      });
-  };
-};
+// export const posts = ({ title, content }) => {
+//   return (dispatch) => {
+//     axios
+//       .get("http://localhost:2020/api/posts", { title, content })
+//       .then(({ data }) => {
+//         dispatch(posts(data));
+//       })
+//       .catch(() => {
+//         dispatch(Error('le theme que vous cherchez n\existe pas!'));
+//       });
+//   };
+// };
+// export const themePage = () => {
+//   const [ theme, SetTheme] = useState(''); 
+
+//   useEffect(() =>{
+//     const dataTheme = async () => {
+//       try {
+//         const response = await 
+//       }
+//     }
+//   })
 
 export const userRegister = ({ pseudo, email, password }) => {
   return (dispatch) => {

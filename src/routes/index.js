@@ -1,9 +1,10 @@
-import AboutPage from '../pages/about';
+import ThemePage from '../pages/themes';
+import CreateThemePage from '../pages/themes/create_themes';
 import Error404 from '../pages/errors/404';
 import HomePage from '../pages/home';
 import LoginPage from '../pages/login';
 import RegisterPage from '../pages/register';
-import SubjectPage from '../pages/subjects';
+import PostPage from '../pages/subjects';
 import SubjectCreatePage from '../pages/subjects/create';
 import SubjectShowPage from '../pages/subjects/show';
 
@@ -11,10 +12,10 @@ import SubjectShowPage from '../pages/subjects/show';
 export const appRoute = [
     { path: '', element: <HomePage /> },
     {
-        path: 'subjects',
+        path: 'posts',
         children: [
             {
-                index: true, element: <SubjectPage />
+                index: true, element: <PostPage />
             },
             {
                 path: ':id', element: <SubjectShowPage />
@@ -25,7 +26,14 @@ export const appRoute = [
         ]
     },
     {
-        path: 'about', element: <AboutPage />
+        path: 'themes',  children: [
+            {
+                index: true, element: <ThemePage />
+            },
+            {
+                path: 'create', element: <CreateThemePage />
+            },
+        ]
     },
     {
         path: 'register', element: <RegisterPage />

@@ -1,4 +1,6 @@
 import axios from "axios";
+import { useAxios } from "../hooks/axios-hook";
+
 import { getInstanceAxios } from "../lib/axios-connect";
 
 const postController = {
@@ -10,9 +12,10 @@ const postController = {
       console.log("oups");
     }
   },
-  addSubject: async (data) => {
+  addPost: async (data) => {
     try {
       await getInstanceAxios().post("/api/posts", { ...data });
+      // useAxios();
       console.log("sended");
     } catch (error) {
       console.log("prblem");
