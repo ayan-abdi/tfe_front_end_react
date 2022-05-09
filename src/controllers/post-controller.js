@@ -14,13 +14,18 @@ const postController = {
   },
   addPost: async (data) => {
     try {
-      await getInstanceAxios().post("/api/posts", { ...data });
+      await getInstanceAxios().post("/api/posts", data);
       // useAxios();
       console.log("sended");
     } catch (error) {
       console.log("prblem");
     }
   },
+  // deletePost: async ({ id }) => {
+  //   try {
+  //     await getInstanceAxios().delete(`api/posts/${id}`);
+  //   } catch (error) {}
+  // },
 };
 
 export default postController;

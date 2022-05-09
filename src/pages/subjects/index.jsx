@@ -18,38 +18,52 @@ const PostPage = () => {
   useEffect(() => {
     // Methode Add
     const postSubject = async () => {
-      postController.addSubject({ title: "test", content: "paragraphe" });
+      const data = await postController.addSubject({
+        title: "test",
+        content: "paragraphe",
+      });
     };
     postSubject();
 
-// Methode GetAll
+    // Methode GetAll
     const getSubject = async () => {
       const data = await postController.getAll();
       setPosts(data);
     };
     getSubject();
   }, []);
+  // Methode delete
+  const deleteSubject = async () => {
+    const data = await postController.deletePost();
+    setPosts(data);
+  };
 
-  const handleClick = (data) => {};
+  const handleClick = (data) => {
+    deleteSubject(data);
+  };
   //   useRedirectPost();
-  
+
   return (
     <div>
-      {posts &&
-        posts.map((post) => 
-      {
-          return <tr>
-            <td style={{border: '1px solid black'}}>{post.id}</td>
-            <td style={{border: '1px solid black'}}>{post.title}</td>
-            <td style={{border: '1px solid black'}}>{post.content}</td>
-          </tr>
-          // WARNING: si je met key= {subject.id} cela impacte l'ordre des id envoyé dans la requete 
-        })}
+      <h1>Par où commencer ?</h1>
+      <table>
+        <tbody>
+          {posts &&
+            posts.map((post) => {
+              return (
+                <tr>
+                  <td style={{ border: "1px solid black" }}>{post.id}</td>
+                  <td style={{ border: "1px solid black" }}>{post.title}</td>
+                  <td style={{ border: "1px solid black" }}>{post.content}</td>
+                </tr>
+              );
+              // WARNING: si je met key= {subject.id} cela impacte l'ordre des id envoyé dans la requete
+            })}
+        </tbody>
+      </table>
+      <h2>Pour finir je suis au point mort!!!!!!</h2>
+      <button onClick={handleClick}>Supprime</button>
     </div>
-    // <h1>Je suis sur la page sujet</h1>
-  //    {posts &&
-  //   posts.map((subject) => 
-  //   { <p key={subject.id}>{subject.title} :{subject.content}</p>)}
   );
 };
 
