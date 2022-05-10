@@ -61,7 +61,7 @@ const PostPage = () => {
             })}
         </tbody>
       </table>
-      <h2>Pour finir je suis au point mort!!!!!!</h2>
+      {/* <h2>Pour finir je suis au point mort!!!!!!</h2> */}
       <button onClick={handleClick}>Supprime</button>
     </div>
   );
